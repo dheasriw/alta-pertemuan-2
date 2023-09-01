@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue CDN</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{ pesan }}</p>
+        <p v-html="pesan"></p>
+
+        <p id="caption1">Hai saya Paragraf 1</p>
+        <p v-bind:id="idParagraf">Hai saya Paragraf 2</p>
+
+        <input type="text" v-model.value="angka">
+        <button @click="tambahkan">Tambah</button>
+        <p>Angka : {{ currency }}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        const vue = new Vue({
+            el: '#app',
+            data: {
+                pesan: '<b>Halo Vue.js</b>',
+                idParagraf: 'caption',
+                angka: 0
+            },
+            methods: {
+                tambahkan() {
+                    this.angka = this.angka + 1;
+                }
+            },
+            computed: {
+                currency: function() {
+                    return 'Rp. ' + this.angka;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
